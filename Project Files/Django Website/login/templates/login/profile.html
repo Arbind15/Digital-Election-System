@@ -1,0 +1,116 @@
+{% extends "login/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="content-section" style="border:1px solid darkslategray">
+
+      <div class="media" align="middle" style="background-color:lightblue">
+
+
+{##}
+{#        <div class="media-body">#}
+{##}
+{#          <h2 class="account-heading">{{ user.username }}</h2>#}
+{##}
+{#          <p class="text-secondary">{{ user.email }}</p>#}
+{##}
+{#        </div>#}
+{##}
+      </div>
+
+
+
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <fieldset class="form-group">
+
+              <legend class="border-bottom mb-4">Profile Information</legend>
+              <div class="select2-container--focus">
+                  <table>
+                       <tr>
+                          <td>Voter ID Number:&nbsp</td>
+                        <td>{{ temp.Voter_ID_Number }}</td>
+                      </tr>
+                      <tr>
+                          <td>Citizen ID Number:&nbsp</td>
+                        <td>{{ temp.Citizen_ID_Number }}</td>
+                      </tr>
+                    <tr>
+                        <td>Username:&nbsp</td>
+                        <td>{{ user.username }}</td>
+
+                    </tr>
+                      <tr>
+                          <td>Full Name:&nbsp</td>
+                        <td>{{ user.first_name }}&nbsp{{ user.last_name }}</td>
+                      </tr>
+                      <tr>
+                          <td>Email:&nbsp</td>
+                        <td>{{ user.email }}</td>
+                      </tr>
+                      <tr>
+                          <td>Date of Birth:</td>
+                        <td>{{ temp.Date_of_Birth}}</td>
+                      </tr>
+                      <tr>
+                          <td>Address:&nbsp</td>
+                        <td>{{ temp.Address }}</td>
+                      </tr>
+                      <tr>
+                          <td>Phone:&nbsp</td>
+                        <td>{{ temp.Phone }}</td>
+                      </tr>
+                      <tr>
+                          <td>Gender:&nbsp</td>
+                        <td>{{ temp.Gender }}</td>
+                      </tr>
+                      <tr>
+                          <td>Province:&nbsp</td>
+                        <td>{{ temp.Province }}</td>
+                      </tr>
+                      <tr>
+                          <td>Remark:&nbsp</td>
+                        <td>{{ temp.Remark }}</td>
+                      </tr>
+                       <tr>
+                          <td>Vote Status:&nbsp</td>
+                        <td>{{ temp.Vote_Status }}</td>
+                      </tr>
+
+
+              </table>
+                  <br>
+                  <br>
+                  <legend class="border-bottom mb-4">Files</legend>
+                  <p class="account-img" align="middle">
+                      <img class="account-img" src="/media/{{ temp.Photo_Candidate }}">
+                  </p>
+                  <p class="account-img" align="middle">
+                      <img class="account-img" align="left" src="/media/{{ temp.Photo_Citizenship_Front }}">
+                  </p>
+                  <div align="middle">
+                  <p class="media" align="middle">
+                      <img class="account-img" align="left" src="/media/{{ temp.Photo_Citizenship_Rare }}">
+                  </p>
+                  </div>
+                  </div>
+{##}
+{#              {{ c_form|crispy }}#}
+{#              {{ u_form|crispy }}#}
+
+          </fieldset>
+            <hr>
+          <div class="form-group" >
+
+              <button class="btn btn-outline-info" type="submit">Save Confirmation Page</button>
+
+          </div>
+
+      </form>
+
+    </div>
+
+{% endblock content %}
